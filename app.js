@@ -1,24 +1,29 @@
 //array para armazenamento dos nomes
 let amigos = [];
+// array auxiliar para controle de duplicidade em caixa baixa
+let amigosSecreto = [];
 
 function adicionarAmigo() {
     const input = document.getElementById('amigo');
-    const nome = input.value.trim();
+    const nomeCorreto = input.value.trim();
 
     //validação para saber se está vazio ou não
-    if (nome === "") {
+    if (nomeCorreto === "") {
         alert("Por favor, insira um nome válido!");
         return;
     }
+    const nomeOriginal = nomeCorreto.toLowerCase();
 
     //verificação de duplicidade
-    if (amigos.includes(nome)) {
+    if (amigosSecreto.includes(nomeOriginal)) {
         alert("Este nome já foi adicionado!");
+        input.value = ""; //limpa o campo
         return;
     }
 
     //adiciona nome ao array
-    amigos.push(nome);
+    amigos.push(nomeCorreto);
+    amigosSecreto.push(nomeOriginal)
     atualizarLista();
     input.value = "";
 }
@@ -51,15 +56,27 @@ function sortearAmigo() {
     //sorteio do nome modo aleatório
     const indiceSorteado = Math.floor(Math.random() * amigos.length);
     const nomeSorteado = amigos[indiceSorteado];
-
+        
+    
     //remover nome do sorteado do array
     amigos.splice(indiceSorteado, 1);
+    amigosSecreto.splice(indiceSorteado,1);
 
     //atualiza a lista após remoção
     atualizarLista();
 
     //mostar nome do sorteado
     const itemResultado = document.createElement('li');
-    itemResultado.textContent = `🎉 O amigo secreto é: ${nomeSorteado}`;
+    itemResultado.innerHTML = `
+  <img src="assets/festa.gif" alt="Festa" style="width:32px; vertical-align:middle; margin-right:8px;">
+  O amigo secreto é: ${nomeSorteado}
+`;
     resultado.appendChild(itemResultado);
+    
+ confetti({
+    particleCount: 100,
+    spread: 70,
+    origin: { y: 0.6 }
+    });
 }
+
