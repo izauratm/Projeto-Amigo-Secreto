@@ -12,30 +12,39 @@
 </head>
 
 <body>
-    <main class="main-content">
-        <header class="header-banner">
-            <h1 class="main-title">Amigo Secreto</h1>
-            <img src="assets/amigo-secreto.png" alt="Imagem representativa de amigo secreto">
-        </header>
-        
-        <section class="input-section">
-            <h2 class="section-title">Digite o nome dos seus amigos</h2>
-            <div class="input-wrapper">
-                <input type="text" id="amigo" class="input-name" placeholder="Digite um nome">
-                <button class="button-add" onclick="adicionarAmigo()">Adicionar</button>
-            </div>
-           
-            <ul id="listaAmigos" class="name-list" aria-labelledby="listaAmigos" role="list"></ul>
-            <ul id="resultado" class="result-list" aria-live="polite"></ul>
+    <div class="container">
+    <div class="content-section">
+        <main class="main-content">
+            <header class="header-banner">
+                <h1 class="page-title">Escolha seu Amigo Secreto</h1>
+            </header>
+            
+            <section class="input-section">
+                <h2 class="section-title">Digite o Nome dos Seus Amigos:</h2>
+                <div class="input-wrapper">
+                    <label for="amigo" class="visually-hidden">Nome do amigo:</label>
+                    <input type="text" id="amigo" class="input-name" placeholder="Digite um nome">
+                    <button class="button-add" onclick="adicionarAmigo()">Adicionar</button>
+                </div>
+                
+                <ul id="listaAmigos" class="name-list" aria-labelledby="listaAmigos" role="list"></ul>
+                
+                <h3 class="result-title">Resultado do Sorteio:</h3>
+                <ul id="resultado" class="result-list" aria-live="polite"></ul>
 
-            <div class="button-container">
-                <button class="button-draw" onclick="sortearAmigo()" aria-label="Sortear amigo secreto">
-                    <img src="assets/play_circle_outline.png" alt="Ícone para sortear">
-                    Sortear Amigo
-                </button>
-            </div>
-        </section>
-    </main>
+                <div class="button-container">
+                    <button class="button-draw" onclick="sortearAmigo()" aria-label="Sortear amigo secreto">
+                        <img src="assets/play_circle_outline.png" alt="Ícone para sortear">
+                        Sortear Amigo
+                    </button>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <div class="image-section">
+        </div>
+</div>
 
     <script src="app.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
